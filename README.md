@@ -1,18 +1,9 @@
-# はじめに
+# Introduce
 
-EC2 インスタンス(AmazonLinux2)や付随するリソースの作成〜AmazonLinux2 への SSH 接続確認をすることを目的としたコードになります。
+The code to create the following resources.
+
+- EC2 Instance(AmazonLinux2)
+- VPC
+
+This code was created for the purpose of being able to SSH into Amazon Linux 2.
 <br>
-
-# 作成するリソース
-
-- EC2 インスタンス
-- ネットワーク周り(VPC やサブネット等)
-- セキュリティグループ
-
-# 事前準備
-
-準備中
-
-# コード実行〜確認
-
-準備中
