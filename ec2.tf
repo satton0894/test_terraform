@@ -3,7 +3,7 @@
 # ----------------------------------
 resource "aws_key_pair" "keypair" {
   key_name   = "${var.project}-${var.environment}-keypeir"
-  public_key = file("./src/testkey.pub")
+  public_key = file("./src/id_test_key.pub")
 
   tags = {
     Name    = "${var.project}-${var.environment}-keypair"
