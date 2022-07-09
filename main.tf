@@ -29,3 +29,7 @@ variable "project" {
 variable "environment" {
   type = string
 }
+
+variable "myip" {
+  type = string
+}

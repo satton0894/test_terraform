@@ -37,7 +37,9 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# End of https://www.toptal.com/developers/gitignore/api/terraform
+# Dependency Lock File
+.terraform.lock.hcl
 
-# src
+# key file
 src/
+.DS_Store
