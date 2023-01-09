@@ -10,26 +10,14 @@ terraform {
     }
   }
 }
-
-# ----------------------------------
-# Provider
-# ----------------------------------
 provider "aws" {
   profile = "terraform"
   region  = "ap-northeast-1"
 }
 
 # ----------------------------------
-# Varibales
+# module
 # ----------------------------------
-variable "project" {
-  type = string
-}
-
-variable "environment" {
-  type = string
-}
-
-variable "myip" {
-  type = string
+module "test" {
+  source = "./terraform/module/test"
 }
