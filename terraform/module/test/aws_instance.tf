@@ -1,20 +1,3 @@
-# ----------------------------------
-# key pair
-# ----------------------------------
-resource "aws_key_pair" "keypair" {
-  key_name   = "${var.project}-${var.environment}-keypeir"
-  public_key = file("./src/id_test_key.pub")
-
-  tags = {
-    Name    = "${var.project}-${var.environment}-keypair"
-    Project = var.project
-    Env     = var.environment
-  }
-}
-
-# ----------------------------------
-# EC2 Instance
-# ----------------------------------
 resource "aws_instance" "server" {
   ami                         = "ami-02c3627b04781eada"
   instance_type               = "t2.micro"
