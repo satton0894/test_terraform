@@ -15,10 +15,25 @@ permissions:
 jobs:
   aws-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
-      - uses: actions/checkout@v2
-      - uses: aws-actions/configure-aws-credentials@v1
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-      - run: aws sts get-caller-identity
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      - name: Exec Terraform fmt check
+        run: |
+          terraform fmt-recursive -check
+      - name: Exec Terraform init
+        run: |
+          terraform init
+      - name: Exec Terraform plan
+        run: |
+          terraform plan
