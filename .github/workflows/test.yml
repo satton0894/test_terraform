@@ -22,4 +22,3 @@ jobs:
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
       - run: aws sts get-caller-identity
-aa
