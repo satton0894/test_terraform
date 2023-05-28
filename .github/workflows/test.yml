@@ -6,7 +6,7 @@ on:
       - '**'
       - '!master'
   pull_request:
-    types: [opened]
+    types: [opened, reopened]
 
 permissions:
   id-token: write
@@ -26,6 +26,7 @@ jobs:
         with:
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+      - run: aws sts get-caller-identity
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
       - name: Exec Terraform fmt check
@@ -34,6 +35,9 @@ jobs:
       - name: Exec Terraform init
         run: |
           terraform init
+      - name: Exec Terraform validate
+        run: |
+          terraform plan
       - name: Exec Terraform plan
         run: |
           terraform plan
