@@ -6,13 +6,13 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">3.0"
+      version = "~> 4.0"
     }
   }
 }
+
 provider "aws" {
-  profile = "terraform"
-  region  = "ap-northeast-1"
+  region = "ap-northeast-1"
 }
 
 # ----------------------------------
