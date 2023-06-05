@@ -6,7 +6,6 @@ resource "aws_instance" "server" {
   vpc_security_group_ids = [
     aws_security_group.opmng_sg.id
   ]
-  key_name = aws_key_pair.keypair.key_name
 
   tags = {
     Name    = "${var.project}-${var.environment}-app-ec2"
