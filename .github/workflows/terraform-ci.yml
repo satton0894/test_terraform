@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
-    name: Terraform
+  ci:
+    name: ci
     runs-on: ubuntu-latest
 
     defaults:
