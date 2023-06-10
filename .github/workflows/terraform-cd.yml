@@ -1,0 +1,35 @@
+name: terraform-cd
+
+on: 
+    push:
+      branches:
+        - master
+
+permissions:
+    id-token: write
+    contents: read
+
+jobs:
+  ci-reuse:
+    uses: ./.github/workflows/terraform-ci.yaml
+
+  cd:
+    name: cd
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3   
+
+      - name: confiture AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: ${{ vars.AWS_DEFAULT_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+
+      - name: Exec Terraform apply
+        run: |
+          terraform apply
