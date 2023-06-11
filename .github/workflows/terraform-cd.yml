@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   ci-reuse:
-    uses: ./.github/workflows/terraform-ci.yaml
+    uses: ./.github/workflows/terraform-ci.yml
 
   cd:
     name: cd
