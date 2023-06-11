@@ -11,13 +11,14 @@ permissions:
   contents: read
 
 jobs:
-  ci:
-    name: ci
+  CI:
+    name: CI
     runs-on: ubuntu-latest
 
     defaults:
       run:
         shell: bash
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3   
