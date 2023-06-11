@@ -30,6 +30,25 @@ jobs:
           aws-region: ${{ vars.AWS_DEFAULT_REGION }}
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+  
+      - name: Exec Terraform init
+        run: |
+          terraform init
+  
+      - name: Exec Terraform fmt check
+        run: |
+          terraform fmt -recursive -check
+  
+      - name: Exec Terraform validate
+        run: |
+          terraform validate
+  
+      - name: Exec Terraform plan
+        run: |
+          terraform plan
+
       - name: Exec Terraform apply
         run: |
           terraform apply
